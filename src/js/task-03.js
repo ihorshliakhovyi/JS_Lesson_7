@@ -1,3 +1,5 @@
+'use strict';
+
 const images = [
   {
     url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -12,3 +14,19 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+
+function createListItems(array) {
+  return array.map(e => {
+    const elem = document.createElement('li');
+    elem.insertAdjacentHTML('beforeend',
+     `<img src="${e.url}" alt="${e.alt}">`);
+    return elem;
+  });
+};
+
+function fillGallery(array) {
+  return document.getElementById('gallery').append(...createListItems(array));
+};
+
+fillGallery(images);
